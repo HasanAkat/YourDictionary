@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
@@ -13,14 +13,14 @@ namespace YourDictionary
         public DictionaryForm()
         {
             InitializeComponent();
-            DisplayDictionaryData();  // Form açılınca verileri göster
+            DisplayDictionaryData();  // Form acilinca verileri goster
         }
 
         private void DisplayDictionaryData()
         {
-            dictionaryGridView.Rows.Clear(); // Önceki verileri temizle
+            dictionaryGridView.Rows.Clear(); // Onceki verileri temizle
 
-            // Olay işleyicisini temizle
+            // Olay isleyicisini temizle
             dictionaryGridView.CellClick -= DictionaryGridView_CellClick;
 
             List<Word> words = DictionaryRepository.LoadWords();
@@ -29,21 +29,21 @@ namespace YourDictionary
                 dictionaryGridView.Rows.Add(word.Term, word.Definition, "Delete");
             }
 
-            // Olay işleyicisini tekrar ekle
+            // Olay isleyicisini tekrar ekle
             dictionaryGridView.CellClick += DictionaryGridView_CellClick;
         }
 
         private void DictionaryGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 2 && e.RowIndex >= 0) // Sil butonuna basıldıysa
+            if (e.ColumnIndex == 2 && e.RowIndex >= 0) // Sil butonuna basildiysa
             {
                 Debug.WriteLine("Rows count: " + dictionaryGridView.Rows.Count);
-                string termToDelete = dictionaryGridView.Rows[e.RowIndex].Cells[0].Value as string; // Term değeri
+                string termToDelete = dictionaryGridView.Rows[e.RowIndex].Cells[0].Value as string; // Term degeri
 
                 if (!string.IsNullOrEmpty(termToDelete))
                 {
                     DictionaryRepository.DeleteWord(termToDelete);
-                    DisplayDictionaryData(); // Listeyi güncelle
+                    DisplayDictionaryData(); // Listeyi guncelle
                 }
                 else
                 {
@@ -61,7 +61,7 @@ namespace YourDictionary
         {
             if (e.KeyCode == Keys.Enter)
             {
-                PerformSearch();  // Enter’a basınca arama yap
+                PerformSearch();  // Enter'a basinca arama yap
             }
         }
 
@@ -69,7 +69,7 @@ namespace YourDictionary
         {
             if (string.IsNullOrWhiteSpace(searchTB.Text))
             {
-                DisplayDictionaryData(); // 📌 Arama kutusu boşsa tüm verileri göster
+                DisplayDictionaryData(); // Arama kutusu bossa tum verileri goster
             }
         }
 
@@ -98,10 +98,25 @@ namespace YourDictionary
         {
             AddWordForm addWordForm = new AddWordForm();
             addWordForm.ShowDialog();
-            if (addWordForm.DialogResult == DialogResult.OK) // Eğer kelime başarıyla eklendiyse
+            if (addWordForm.DialogResult == DialogResult.OK) // Eger kelime basariyla eklendiyse
             {
-                DisplayDictionaryData(); // Listeyi güncelle
+                DisplayDictionaryData(); // Listeyi guncelle
             }
+        }
+
+        private void testBTN_Click(object sender, EventArgs e)
+        {
+            List<Word> words = DictionaryRepository.LoadWords();
+            if (words.Count < 3)
+            {
+                MessageBox.Show("Testi baslatmak icin en az 3 kelime ekleyin.", "Yetersiz veri",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            using TestForm testForm = new(words);
+            testForm.ShowDialog(this);
         }
     }
 }
+

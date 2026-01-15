@@ -34,6 +34,7 @@
             searchPanel = new TableLayoutPanel();
             searchBTN = new Button();
             addBTN = new Button();
+            testBTN = new Button();
             panel1 = new Panel();
             dictionaryGridView = new DataGridView();
             termColumn = new DataGridViewTextBoxColumn();
@@ -71,15 +72,17 @@
             // 
             // searchPanel
             // 
-            searchPanel.ColumnCount = 4;
+            searchPanel.ColumnCount = 5;
             searchPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 30F));
             searchPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 40F));
             searchPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 10F));
-            searchPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
+            searchPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 10F));
+            searchPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 10F));
             searchPanel.Controls.Add(searchBTN, 2, 0);
             searchPanel.Controls.Add(logoIMG, 0, 0);
             searchPanel.Controls.Add(searchTB, 1, 0);
             searchPanel.Controls.Add(addBTN, 3, 0);
+            searchPanel.Controls.Add(testBTN, 4, 0);
             searchPanel.Dock = DockStyle.Top;
             searchPanel.Location = new Point(0, 0);
             searchPanel.Name = "searchPanel";
@@ -105,7 +108,7 @@
             // addBTN
             // 
             addBTN.Anchor = AnchorStyles.Right;
-            addBTN.Location = new Point(937, 13);
+            addBTN.Location = new Point(834, 13);
             addBTN.MinimumSize = new Size(50, 0);
             addBTN.Name = "addBTN";
             addBTN.Size = new Size(80, 44);
@@ -113,6 +116,18 @@
             addBTN.Text = "Add New";
             addBTN.UseVisualStyleBackColor = true;
             addBTN.Click += addBTN_Click;
+            // 
+            // testBTN
+            // 
+            testBTN.Anchor = AnchorStyles.Right;
+            testBTN.Location = new Point(937, 13);
+            testBTN.MinimumSize = new Size(50, 0);
+            testBTN.Name = "testBTN";
+            testBTN.Size = new Size(80, 44);
+            testBTN.TabIndex = 5;
+            testBTN.Text = "Test";
+            testBTN.UseVisualStyleBackColor = true;
+            testBTN.Click += testBTN_Click;
             // 
             // panel1
             // 
@@ -200,6 +215,7 @@
         private TableLayoutPanel searchPanel;
         private Button searchBTN;
         private Button addBTN;
+        private Button testBTN;
         private Panel panel1;
         private DataGridView dictionaryGridView;
         private DataGridViewTextBoxColumn termColumn;
