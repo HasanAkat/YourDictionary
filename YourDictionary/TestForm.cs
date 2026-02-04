@@ -17,6 +17,7 @@ namespace YourDictionary
         public TestForm(List<Word> words)
         {
             InitializeComponent();
+            Icon = AppIconProvider.GetAppIcon();
             if (words == null)
             {
                 throw new ArgumentNullException(nameof(words));

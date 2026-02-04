@@ -7,6 +7,7 @@ namespace YourDictionary
         public LoadScreenForm()
         {
             InitializeComponent();
+            Icon = AppIconProvider.GetAppIcon();
         }
 
         private void LoadScreenForm_Load(object sender, EventArgs e)
@@ -16,14 +17,17 @@ namespace YourDictionary
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            timer1.Stop();
+
             while (i != 100)
             {
                 i++;
             }
-            DictionaryForm dictionaryForm = new DictionaryForm();
-            dictionaryForm.Show();
-            this.Hide();
-            timer1.Stop();
+
+            HomeForm homeForm = new HomeForm();
+            homeForm.FormClosed += (_, _) => Close();
+            Hide();
+            homeForm.Show();
         }
     }
 }

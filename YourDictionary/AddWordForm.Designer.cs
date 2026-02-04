@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            lessonNameValueLabel = new Label();
+            lessonNameTitleLabel = new Label();
             label3 = new Label();
             cancelBTN = new Button();
             okBTN = new Button();
@@ -41,6 +43,8 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(lessonNameValueLabel);
+            panel1.Controls.Add(lessonNameTitleLabel);
             panel1.Controls.Add(label3);
             panel1.Controls.Add(cancelBTN);
             panel1.Controls.Add(okBTN);
@@ -53,6 +57,27 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(682, 303);
             panel1.TabIndex = 0;
+            // 
+            // lessonNameValueLabel
+            // 
+            lessonNameValueLabel.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            lessonNameValueLabel.Location = new Point(474, 66);
+            lessonNameValueLabel.Name = "lessonNameValueLabel";
+            lessonNameValueLabel.Size = new Size(196, 23);
+            lessonNameValueLabel.TabIndex = 8;
+            lessonNameValueLabel.Text = "-";
+            lessonNameValueLabel.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // lessonNameTitleLabel
+            // 
+            lessonNameTitleLabel.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            lessonNameTitleLabel.AutoSize = true;
+            lessonNameTitleLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            lessonNameTitleLabel.Location = new Point(382, 66);
+            lessonNameTitleLabel.Name = "lessonNameTitleLabel";
+            lessonNameTitleLabel.Size = new Size(86, 20);
+            lessonNameTitleLabel.TabIndex = 7;
+            lessonNameTitleLabel.Text = "Aktif Ders:";
             // 
             // label3
             // 
@@ -156,5 +181,7 @@
         private Button okBTN;
         private Button cancelBTN;
         private Label label3;
+        private Label lessonNameValueLabel;
+        private Label lessonNameTitleLabel;
     }
 }

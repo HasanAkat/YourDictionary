@@ -14,9 +14,14 @@ namespace YourDictionary
 {
     public partial class AddWordForm : Form
     {
-        public AddWordForm()
+        private readonly LessonInfo _lessonInfo;
+
+        public AddWordForm(LessonInfo lessonInfo)
         {
+            _lessonInfo = lessonInfo ?? throw new ArgumentNullException(nameof(lessonInfo));
             InitializeComponent();
+            Icon = AppIconProvider.GetAppIcon();
+            lessonNameValueLabel.Text = _lessonInfo.Name;
         }
 
         private void okBTN_Click(object sender, EventArgs e)
@@ -32,7 +37,7 @@ namespace YourDictionary
             }
 
             // 📌 Daha önce eklenmiş mi kontrol et
-            var existingWords = DictionaryRepository.LoadWords();
+            var existingWords = DictionaryRepository.LoadWords(_lessonInfo.Id);
             if (existingWords.Any(w => w.Term.Equals(term, StringComparison.OrdinalIgnoreCase)))
             {
                 MessageBox.Show("Bu terim zaten mevcut!", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -40,7 +45,7 @@ namespace YourDictionary
             }
 
 
-            DictionaryRepository.AddWord(term, definition);
+            DictionaryRepository.AddWord(_lessonInfo.Id, term, definition);
             MessageBox.Show("Kelime başarıyla eklendi!", "Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.DialogResult = DialogResult.OK;
             this.Close();

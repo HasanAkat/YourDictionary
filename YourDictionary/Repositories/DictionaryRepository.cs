@@ -1,44 +1,41 @@
-﻿using System.Text.Json;
+using System.Text.Json;
 using YourDictionary.Models;
-
 
 namespace YourDictionary.Repositories
 {
-    public class DictionaryRepository
+    public static class DictionaryRepository
     {
-        private static readonly string FilePath = Path.Combine(AppContext.BaseDirectory, "dictionary.json");
-
-
-        // JSON'dan kelimeleri yükleme
-        public static List<Word> LoadWords()
+        public static List<Word> LoadWords(string lessonId)
         {
-            if (!File.Exists(FilePath))
+            string filePath = LessonRepository.GetLessonFilePath(lessonId);
+            if (!File.Exists(filePath))
             {
                 return new List<Word>();
             }
 
-            string json = File.ReadAllText(FilePath);
-            return JsonSerializer.Deserialize<List<Word>>(json);
+            string json = File.ReadAllText(filePath);
+            return JsonSerializer.Deserialize<List<Word>>(json) ?? new List<Word>();
         }
 
-        // JSON'a yeni kelime ekleme
-        public static void AddWord(string term, string definition)
+        public static void AddWord(string lessonId, string term, string definition)
         {
-            List<Word> words = LoadWords();
+            List<Word> words = LoadWords(lessonId);
             words.Add(new Word { Term = term, Definition = definition });
-
-            string json = JsonSerializer.Serialize(words, new JsonSerializerOptions { WriteIndented = true });
-            File.WriteAllText(FilePath, json);
+            SaveWords(lessonId, words);
         }
 
-        // JSON'dan kelime silme
-        public static void DeleteWord(string term)
+        public static void DeleteWord(string lessonId, string term)
         {
-            List<Word> words = LoadWords();
+            List<Word> words = LoadWords(lessonId);
             words.RemoveAll(w => w.Term == term);
+            SaveWords(lessonId, words);
+        }
 
+        private static void SaveWords(string lessonId, List<Word> words)
+        {
+            string filePath = LessonRepository.GetLessonFilePath(lessonId);
             string json = JsonSerializer.Serialize(words, new JsonSerializerOptions { WriteIndented = true });
-            File.WriteAllText(FilePath, json);
+            File.WriteAllText(filePath, json);
         }
     }
 }

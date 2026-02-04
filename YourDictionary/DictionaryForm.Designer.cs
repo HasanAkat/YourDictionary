@@ -40,6 +40,7 @@
             termColumn = new DataGridViewTextBoxColumn();
             definitionColumn = new DataGridViewTextBoxColumn();
             deleteColumn = new DataGridViewButtonColumn();
+            lessonNameLabel = new Label();
             ((System.ComponentModel.ISupportInitialize)logoIMG).BeginInit();
             searchPanel.SuspendLayout();
             panel1.SuspendLayout();
@@ -132,12 +133,25 @@
             // panel1
             // 
             panel1.Controls.Add(dictionaryGridView);
+            panel1.Controls.Add(lessonNameLabel);
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(0, 70);
             panel1.Name = "panel1";
             panel1.Padding = new Padding(10);
             panel1.Size = new Size(1030, 407);
             panel1.TabIndex = 2;
+            // 
+            // lessonNameLabel
+            // 
+            lessonNameLabel.Dock = DockStyle.Top;
+            lessonNameLabel.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lessonNameLabel.Location = new Point(10, 10);
+            lessonNameLabel.Name = "lessonNameLabel";
+            lessonNameLabel.Padding = new Padding(0, 0, 0, 8);
+            lessonNameLabel.Size = new Size(1010, 30);
+            lessonNameLabel.TabIndex = 4;
+            lessonNameLabel.Text = "Ders: -";
+            lessonNameLabel.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // dictionaryGridView
             // 
@@ -156,12 +170,12 @@
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             dictionaryGridView.DefaultCellStyle = dataGridViewCellStyle1;
             dictionaryGridView.Dock = DockStyle.Fill;
-            dictionaryGridView.Location = new Point(10, 10);
+            dictionaryGridView.Location = new Point(10, 40);
             dictionaryGridView.Margin = new Padding(10);
             dictionaryGridView.Name = "dictionaryGridView";
             dictionaryGridView.ReadOnly = true;
             dictionaryGridView.RowHeadersWidth = 51;
-            dictionaryGridView.Size = new Size(1010, 387);
+            dictionaryGridView.Size = new Size(1010, 357);
             dictionaryGridView.TabIndex = 3;
             // 
             // termColumn
@@ -221,5 +235,6 @@
         private DataGridViewTextBoxColumn termColumn;
         private DataGridViewTextBoxColumn definitionColumn;
         private DataGridViewButtonColumn deleteColumn;
+        private Label lessonNameLabel;
     }
 }

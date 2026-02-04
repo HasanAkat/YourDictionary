@@ -10,10 +10,15 @@ namespace YourDictionary
 {
     public partial class DictionaryForm : Form
     {
-        public DictionaryForm()
+        private readonly LessonInfo _lessonInfo;
+
+        public DictionaryForm(LessonInfo lessonInfo)
         {
+            _lessonInfo = lessonInfo ?? throw new ArgumentNullException(nameof(lessonInfo));
             InitializeComponent();
-            DisplayDictionaryData();  // Form acilinca verileri goster
+            Icon = AppIconProvider.GetAppIcon();
+            lessonNameLabel.Text = $"Ders: {_lessonInfo.Name}";
+            DisplayDictionaryData();
         }
 
         private void DisplayDictionaryData()
@@ -23,7 +28,7 @@ namespace YourDictionary
             // Olay isleyicisini temizle
             dictionaryGridView.CellClick -= DictionaryGridView_CellClick;
 
-            List<Word> words = DictionaryRepository.LoadWords();
+            List<Word> words = DictionaryRepository.LoadWords(_lessonInfo.Id);
             foreach (var word in words)
             {
                 dictionaryGridView.Rows.Add(word.Term, word.Definition, "Delete");
@@ -42,7 +47,7 @@ namespace YourDictionary
 
                 if (!string.IsNullOrEmpty(termToDelete))
                 {
-                    DictionaryRepository.DeleteWord(termToDelete);
+                    DictionaryRepository.DeleteWord(_lessonInfo.Id, termToDelete);
                     DisplayDictionaryData(); // Listeyi guncelle
                 }
                 else
@@ -82,7 +87,7 @@ namespace YourDictionary
                 return;
             }
 
-            List<Word> filteredWords = DictionaryRepository.LoadWords()
+            List<Word> filteredWords = DictionaryRepository.LoadWords(_lessonInfo.Id)
                 .Where(word => word.Term.ToLower().Contains(searchText) || word.Definition.ToLower().Contains(searchText))
                 .ToList();
 
@@ -96,8 +101,8 @@ namespace YourDictionary
 
         private void addBTN_Click(object sender, EventArgs e)
         {
-            AddWordForm addWordForm = new AddWordForm();
-            addWordForm.ShowDialog();
+            AddWordForm addWordForm = new AddWordForm(_lessonInfo);
+            addWordForm.ShowDialog(this);
             if (addWordForm.DialogResult == DialogResult.OK) // Eger kelime basariyla eklendiyse
             {
                 DisplayDictionaryData(); // Listeyi guncelle
@@ -106,7 +111,7 @@ namespace YourDictionary
 
         private void testBTN_Click(object sender, EventArgs e)
         {
-            List<Word> words = DictionaryRepository.LoadWords();
+            List<Word> words = DictionaryRepository.LoadWords(_lessonInfo.Id);
             if (words.Count < 3)
             {
                 MessageBox.Show("Testi baslatmak icin en az 3 kelime ekleyin.", "Yetersiz veri",
