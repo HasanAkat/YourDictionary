@@ -102,7 +102,7 @@
             searchBTN.Name = "searchBTN";
             searchBTN.Size = new Size(59, 27);
             searchBTN.TabIndex = 4;
-            searchBTN.Text = "search";
+            searchBTN.Text = "Search";
             searchBTN.UseVisualStyleBackColor = true;
             searchBTN.Click += searchBTN_Click;
             // 
@@ -150,7 +150,7 @@
             lessonNameLabel.Padding = new Padding(0, 0, 0, 8);
             lessonNameLabel.Size = new Size(1010, 30);
             lessonNameLabel.TabIndex = 4;
-            lessonNameLabel.Text = "Ders: -";
+            lessonNameLabel.Text = "Lesson: -";
             lessonNameLabel.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // dictionaryGridView
@@ -214,7 +214,7 @@
             Controls.Add(searchPanel);
             Name = "DictionaryForm";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "DictionaryForm";
+            Text = "YourDictionary - Lesson";
             ((System.ComponentModel.ISupportInitialize)logoIMG).EndInit();
             searchPanel.ResumeLayout(false);
             searchPanel.PerformLayout();

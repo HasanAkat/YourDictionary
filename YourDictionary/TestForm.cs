@@ -207,7 +207,7 @@ namespace YourDictionary
             nextQuestionBTN.Name = "nextQuestionBTN";
             nextQuestionBTN.Size = new Size(474, 34);
             nextQuestionBTN.TabIndex = 5;
-            nextQuestionBTN.Text = "Yeni Soru";
+            nextQuestionBTN.Text = "Next Question";
             nextQuestionBTN.UseVisualStyleBackColor = true;
             nextQuestionBTN.Click += nextQuestionBTN_Click;
             // 

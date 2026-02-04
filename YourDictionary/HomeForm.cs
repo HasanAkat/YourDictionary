@@ -33,8 +33,8 @@ namespace YourDictionary
             lessonsListBox.DataSource = _lessons;
 
             lessonsStatusLabel.Text = _lessons.Count == 0
-                ? "Henuz ders bulunmuyor. Yeni bir ders olusturun."
-                : $"{_lessons.Count} ders mevcut.";
+                ? "No lessons yet. Create a new one to get started."
+                : $"{_lessons.Count} lessons available.";
 
             UpdateOpenButtonState();
         }
@@ -49,7 +49,7 @@ namespace YourDictionary
             string lessonName = newLessonTextBox.Text.Trim();
             if (string.IsNullOrWhiteSpace(lessonName))
             {
-                MessageBox.Show("Lutfen yeni ders icin bir isim girin.", "Eksik bilgi",
+                MessageBox.Show("Please enter a name for the new lesson.", "Missing information",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
@@ -63,12 +63,12 @@ namespace YourDictionary
             }
             catch (InvalidOperationException)
             {
-                MessageBox.Show("Bu isimde bir ders zaten mevcut.", "Hata",
+                MessageBox.Show("A lesson with this name already exists.", "Duplicate lesson",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Ders olusturulurken hata olustu: {ex.Message}", "Beklenmeyen hata",
+                MessageBox.Show($"An error occurred while creating the lesson: {ex.Message}", "Unexpected error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }

@@ -72,7 +72,7 @@ namespace YourDictionary
             existingLessonsGroup.Size = new Size(401, 391);
             existingLessonsGroup.TabIndex = 0;
             existingLessonsGroup.TabStop = false;
-            existingLessonsGroup.Text = "Dersler";
+            existingLessonsGroup.Text = "Lessons";
             // 
             // openLessonButton
             // 
@@ -82,7 +82,7 @@ namespace YourDictionary
             openLessonButton.Name = "openLessonButton";
             openLessonButton.Size = new Size(381, 33);
             openLessonButton.TabIndex = 2;
-            openLessonButton.Text = "Dersi Ac";
+            openLessonButton.Text = "Open Lesson";
             openLessonButton.UseVisualStyleBackColor = true;
             openLessonButton.Click += openLessonButton_Click;
             // 
@@ -105,7 +105,7 @@ namespace YourDictionary
             lessonsStatusLabel.Name = "lessonsStatusLabel";
             lessonsStatusLabel.Size = new Size(381, 30);
             lessonsStatusLabel.TabIndex = 0;
-            lessonsStatusLabel.Text = "Dersler yukleniyor...";
+            lessonsStatusLabel.Text = "Loading lessons...";
             lessonsStatusLabel.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // createLessonGroup
@@ -122,7 +122,7 @@ namespace YourDictionary
             createLessonGroup.Size = new Size(339, 391);
             createLessonGroup.TabIndex = 1;
             createLessonGroup.TabStop = false;
-            createLessonGroup.Text = "Yeni Ders Olustur";
+            createLessonGroup.Text = "Create Lesson";
             // 
             // newLessonHintLabel
             // 
@@ -132,7 +132,7 @@ namespace YourDictionary
             newLessonHintLabel.Name = "newLessonHintLabel";
             newLessonHintLabel.Size = new Size(271, 20);
             newLessonHintLabel.TabIndex = 3;
-            newLessonHintLabel.Text = "Orn: \"Unite 1\", \"Kelime Grubu A\", vb.";
+            newLessonHintLabel.Text = "Examples: \"Unit 1\", \"Word Group A\", etc.";
             // 
             // createLessonButton
             // 
@@ -141,7 +141,7 @@ namespace YourDictionary
             createLessonButton.Name = "createLessonButton";
             createLessonButton.Size = new Size(313, 33);
             createLessonButton.TabIndex = 2;
-            createLessonButton.Text = "Ders Olustur";
+            createLessonButton.Text = "Create Lesson";
             createLessonButton.UseVisualStyleBackColor = true;
             createLessonButton.Click += createLessonButton_Click;
             // 
@@ -161,7 +161,7 @@ namespace YourDictionary
             newLessonLabel.Name = "newLessonLabel";
             newLessonLabel.Size = new Size(133, 20);
             newLessonLabel.TabIndex = 0;
-            newLessonLabel.Text = "Yeni Ders Adi Girin";
+            newLessonLabel.Text = "Enter a lesson name";
             // 
             // HomeForm
             // 
@@ -174,7 +174,7 @@ namespace YourDictionary
             MinimizeBox = false;
             Name = "HomeForm";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "YourDictionary - Ana Sayfa";
+            Text = "YourDictionary - Home";
             Load += HomeForm_Load;
             mainLayout.ResumeLayout(false);
             existingLessonsGroup.ResumeLayout(false);

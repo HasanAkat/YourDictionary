@@ -32,7 +32,7 @@ namespace YourDictionary
             // 📌 Boş girişleri kontrol et
             if (string.IsNullOrEmpty(term) || string.IsNullOrEmpty(definition))
             {
-                MessageBox.Show("Lütfen hem terim hem de tanım alanlarını doldurun.", "Eksik Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please fill in both the term and definition fields.", "Missing information", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -40,13 +40,13 @@ namespace YourDictionary
             var existingWords = DictionaryRepository.LoadWords(_lessonInfo.Id);
             if (existingWords.Any(w => w.Term.Equals(term, StringComparison.OrdinalIgnoreCase)))
             {
-                MessageBox.Show("Bu terim zaten mevcut!", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("This term already exists.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
 
             DictionaryRepository.AddWord(_lessonInfo.Id, term, definition);
-            MessageBox.Show("Kelime başarıyla eklendi!", "Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Word added successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.DialogResult = DialogResult.OK;
             this.Close();
         }

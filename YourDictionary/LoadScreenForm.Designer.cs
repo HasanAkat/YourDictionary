@@ -48,7 +48,7 @@
             FormBorderStyle = FormBorderStyle.None;
             Name = "LoadScreenForm";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "LoadScreenForm";
+            Text = "YourDictionary - Loading";
             Load += LoadScreenForm_Load;
             ResumeLayout(false);
         }

@@ -79,7 +79,7 @@ namespace YourDictionary.Repositories
                 return;
             }
 
-            LessonInfo defaultLesson = CreateLesson("Varsayilan Ders");
+            LessonInfo defaultLesson = CreateLesson("Default Lesson");
             string destinationFile = GetLessonFilePath(defaultLesson.Id);
             File.Copy(LegacyDictionaryPath, destinationFile, true);
         }

@@ -77,7 +77,7 @@
             lessonNameTitleLabel.Name = "lessonNameTitleLabel";
             lessonNameTitleLabel.Size = new Size(86, 20);
             lessonNameTitleLabel.TabIndex = 7;
-            lessonNameTitleLabel.Text = "Aktif Ders:";
+            lessonNameTitleLabel.Text = "Active lesson:";
             // 
             // label3
             // 
@@ -165,7 +165,7 @@
             MinimizeBox = false;
             Name = "AddWordForm";
             StartPosition = FormStartPosition.CenterParent;
-            Text = "AddWordForm";
+            Text = "Add Word";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ResumeLayout(false);

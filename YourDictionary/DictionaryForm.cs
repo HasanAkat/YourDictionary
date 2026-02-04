@@ -17,7 +17,7 @@ namespace YourDictionary
             _lessonInfo = lessonInfo ?? throw new ArgumentNullException(nameof(lessonInfo));
             InitializeComponent();
             Icon = AppIconProvider.GetAppIcon();
-            lessonNameLabel.Text = $"Ders: {_lessonInfo.Name}";
+            lessonNameLabel.Text = $"Lesson: {_lessonInfo.Name}";
             DisplayDictionaryData();
         }
 
@@ -114,7 +114,7 @@ namespace YourDictionary
             List<Word> words = DictionaryRepository.LoadWords(_lessonInfo.Id);
             if (words.Count < 3)
             {
-                MessageBox.Show("Testi baslatmak icin en az 3 kelime ekleyin.", "Yetersiz veri",
+                MessageBox.Show("Please add at least 3 words to start a test.", "Not enough words",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
